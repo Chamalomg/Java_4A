@@ -55,6 +55,7 @@ public class ClientService {
 		/*if (!mail.contains("@")) {
 			throw new ServiceException("Le mail doit contenir un @ !");
 		}*/
+		/*Mail déjà uilisé ? */
 	}
 	public long delete(int Id) throws ServiceException {
 		try {
@@ -68,6 +69,8 @@ public class ClientService {
 		String prenom = client.getPrenom();
 		if (prenom.length() == 0) {
 			throw new ServiceException("Le client doit avoir un prenom non vide");
+		} else if (prenom.length() <= 3) {
+			throw new ServiceException("Un prenom ne peut pas être si court !");
 		}
 	}
 
@@ -75,6 +78,8 @@ public class ClientService {
 		String nom = client.getNom();
 		if (nom.length() == 0) {
 			throw new ServiceException("Le client doit avoir un nom non vide");
+		} else if (nom.length() <= 3) {
+			throw new ServiceException("Un nom ne peut pas être si court !");
 		}
 	}
 

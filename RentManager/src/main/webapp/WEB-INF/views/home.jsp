@@ -32,7 +32,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Utilisateurs</span>
-              <span class="info-box-number">99</span>
+              <span class="info-box-number">${ nbUtilisateurs }</span>
             </div>
             <!-- /.info-box-content ${ nbUtilisateurs } -->
           </div>

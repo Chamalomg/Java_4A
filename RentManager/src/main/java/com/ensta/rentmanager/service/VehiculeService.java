@@ -29,6 +29,7 @@ public class VehiculeService {
 	}
 	
 	public long create(Vehicule vehicule) throws ServiceException {
+		checkArgs(vehicule);
 		try {
 			return vehiculeDao.create(vehicule);
 		} catch (DaoException e) {
@@ -41,6 +42,19 @@ public class VehiculeService {
 		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage());
 		}	 
+	}
+	
+	private void checkArgs(Vehicule vehicule) throws ServiceException {
+		String constr = vehicule.getConstructeur();
+		String modele = vehicule.getModele();		
+		int Nb_places = (int)vehicule.getNb_places();
+		if (constr.length() == 0) {
+			throw new ServiceException("Entrer un constructeur");
+		} else if (modele.length() == 0) {
+			throw new ServiceException("Entrer un modèle");
+		} else if (Nb_places <= 2 || Nb_places > 9) {
+			throw new ServiceException("Nombre de place invalide");
+		}
 	}
 
 

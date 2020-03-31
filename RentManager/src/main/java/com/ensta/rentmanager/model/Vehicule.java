@@ -3,6 +3,7 @@ public class Vehicule {
 	private int id;	//Private : seule cette class y a accès
 	private String constructeur;
 	private byte nb_places;
+	private String modele;
 	public Vehicule () {
 		
 	}
@@ -10,6 +11,7 @@ public class Vehicule {
 		this.id = id;
 		this.constructeur = constructeur;
 		this.nb_places = nb_places;
+		this.modele = modele;
 	}
 	public int getId() {
 		return id;
@@ -22,6 +24,12 @@ public class Vehicule {
 	}
 	public void setConstructeur(String constructeur) {
 		this.constructeur = constructeur;
+	}
+	public void setModele(String modele) {
+		this.modele = modele;
+	}
+	public String getModele() {
+		return modele;
 	}
 	public byte getNb_places() {
 		return nb_places;
