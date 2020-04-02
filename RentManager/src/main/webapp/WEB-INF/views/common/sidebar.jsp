@@ -11,7 +11,6 @@
                     <i class="fa fa-user"></i> <span>Utilisateurs</span>
                 </a>
             </li>
-
             <li>
                 <a href="${pageContext.request.contextPath}/cars">
                     <i class="fa fa-car"></i> <span>Voitures</span>

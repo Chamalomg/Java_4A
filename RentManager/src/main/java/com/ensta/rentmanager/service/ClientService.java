@@ -6,13 +6,15 @@ package com.ensta.rentmanager.service;
 
 import java.util.List;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
+import com.ensta.rentmanager.dao.ClientDao;
 import com.ensta.rentmanager.exception.DaoException;
 import com.ensta.rentmanager.exception.ServiceException;
 import com.ensta.rentmanager.model.Client;
-import com.ensta.rentmanager.dao.ClientDao;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+
 
 public class ClientService {
 	
@@ -27,7 +29,6 @@ public class ClientService {
 		if (instance == null) {
 			instance = new ClientService();
 		}
-		
 		return instance;
 	}
 
@@ -52,9 +53,9 @@ public class ClientService {
 	
 	private void checkMail(Client client) throws ServiceException {
 		String mail = client.getEmail();
-		/*if (!mail.contains("@")) {
+		if (!mail.contains("@")) {
 			throw new ServiceException("Le mail doit contenir un @ !");
-		}*/
+		}
 		/*Mail déjà uilisé ? */
 	}
 	public long delete(int Id) throws ServiceException {

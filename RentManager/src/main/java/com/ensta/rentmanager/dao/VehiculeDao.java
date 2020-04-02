@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ensta.rentmanager.exception.DaoException;
-import com.ensta.rentmanager.model.Client;
 import com.ensta.rentmanager.model.Vehicule;
 import com.ensta.rentmanager.persistence.ConnectionManager;
 

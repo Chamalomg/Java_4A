@@ -26,7 +26,8 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/home.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher(
+				"/WEB-INF/views/home.jsp");
 		try {
 			request.setAttribute("nbUtilisateurs", clientService.findAll().size());
 		} catch (ServiceException e) {

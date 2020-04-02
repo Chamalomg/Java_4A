@@ -1,5 +1,6 @@
 package com.ensta.rentmanager.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.ensta.rentmanager.dao.ReservationDao;
@@ -35,6 +36,17 @@ public class ReservationService {
 		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage());
 		}	 
+	}
+	
+	public void checkTemps (Reservation reservation) throws ServiceException {
+		Date debut = reservation.getDebut();
+		Date fin = reservation.getFin();
+		float inter = fin.getTime() - debut.getTime();
+		float days = inter/(24*3600*1000);
+		if (days > 7) {
+			throw new ServiceException("La durée de réservation doit être inférieure à 7 jours, elle est actuellement de "
+		+ String.valueOf(days) + "jours.");
+		}
 	}
 	public List<Reservation> findAll() throws ServiceException {
 		try {
