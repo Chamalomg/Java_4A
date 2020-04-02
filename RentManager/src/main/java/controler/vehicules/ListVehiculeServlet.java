@@ -1,4 +1,4 @@
-package controler.users;
+package controler.vehicules;
 
 import java.io.IOException;
 
@@ -11,29 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ensta.rentmanager.exception.ServiceException;
-import com.ensta.rentmanager.model.Client;
-import com.ensta.rentmanager.service.ClientService;
+import com.ensta.rentmanager.model.Vehicule;
+import com.ensta.rentmanager.service.VehiculeService;
 
-@WebServlet("/users")
-public class ListClientServlet extends HttpServlet {
-	ClientService clientservice = ClientService.getInstance();
+@WebServlet("/cars")
+public class ListVehiculeServlet extends HttpServlet {
+	VehiculeService vehiculeservice = VehiculeService.getInstance();
 	
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WEB-INF/views/users/list.jsp");
+				"/WEB-INF/views/vehicules/list.jsp");
 		try {
-			
-			/*for (Client user: clientservice.findAll()) {
-				System.out.println(user.toString());
-			}*/
+			for (Vehicule car: vehiculeservice.findAll()) {
+				System.out.println(car.toString());
+			}
 			//Renvoie la liste d'users à la vue list.jsp
-			request.setAttribute("users", clientservice.findAll());
+			
+			request.setAttribute("vehicles", vehiculeservice.findAll());
 		} catch (ServiceException e) {
-				request.setAttribute("users", "Une erreur est survenue");
+				request.setAttribute("vehicles", "Une erreur est survenue");
 		}
-		dispatcher.forward(request, (ServletResponse) response);		
+		dispatcher.forward(request, response);		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

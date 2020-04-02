@@ -24,10 +24,10 @@ public class VehiculeDao {
 		return instance;
 	}
 	
-	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places) VALUES(?, ?);";
+	private static final String CREATE_VEHICLE_QUERY = "INSERT INTO Vehicle(constructeur, nb_places, modele) VALUES(?, ?, ?);";
 	private static final String DELETE_VEHICLE_QUERY = "DELETE FROM Vehicle WHERE id=?;";
-	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
-	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle;";
+	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places, modele FROM Vehicle WHERE id=?;";
+	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur, nb_places, modele FROM Vehicle;";
 	
 	public long create(Vehicule vehicule) throws DaoException {
 		try ( Connection conn = ConnectionManager.getConnection();
@@ -35,6 +35,7 @@ public class VehiculeDao {
 		{
 			statement.setString(1, vehicule.getConstructeur());
 			statement.setLong(2, vehicule.getNb_places());
+			statement.setString(3, vehicule.getModele());
 			
 			long result = statement.executeUpdate();
 			return result;
@@ -71,6 +72,7 @@ public class VehiculeDao {
 				vehicule.setId(resultSet.getInt(1));
 				vehicule.setConstructeur(resultSet.getString(2));
 				vehicule.setNb_places(resultSet.getByte(3));
+				vehicule.setModele(resultSet.getString(4));				
 				resultList.add(vehicule);
 			} 
 			return resultList;
@@ -92,6 +94,7 @@ public class VehiculeDao {
 				vehicule.setId(resultSet.getInt(1));
 				vehicule.setConstructeur(resultSet.getString(2));
 				vehicule.setNb_places(resultSet.getByte(3));
+				vehicule.setModele(resultSet.getString(4));		
 				resultList.add(vehicule);
 		}
 			return resultList;			

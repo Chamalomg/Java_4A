@@ -23,21 +23,18 @@ public class DetailsClientServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"WEB-INF/views/users/details.jsp");
+				"/WEB-INF/views/users/details.jsp");
 		
 		int id_client = Integer.parseInt(request.getParameter("id"));	
 		System.out.println("Id : " + id_client);
 		
 		 try {
 			 System.out.println("try again");
-			 //Client newclient = new Client();
-			 //clientservice.findById(id_client);
 			 request.setAttribute("nomUtilisateur", clientservice.findById(id_client));
 		 } catch (ServiceException e) {
-			 System.out.println("Une erreur");
 			 request.setAttribute("nomUtilisateur", "Erreur lors de la recherche du client");
 		 }
-		 dispatcher.forward(request, (ServletResponse)response);
+		 dispatcher.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
