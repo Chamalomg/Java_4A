@@ -155,11 +155,8 @@ public class CliControler {
 	private static void afficherVehiculeId(CliControler cli, Scanner sc) {
 		try {
 			System.out.println("Entrer l'id du véhicule à afficher");
-			List<Vehicule> list = cli.vehiculeservice.findById(sc.nextInt());
-			for(Vehicule vehicule : list) {
-				System.out.println(vehicule);
-			}
-			
+			Vehicule vehicule = cli.vehiculeservice.findById(sc.nextInt());
+			vehicule.toString();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}

@@ -60,7 +60,7 @@ public class VehiculeDao {
 
 	/*public Optional<Vehicule> findById(long id) throws DaoException {
 	}*/
-	public List<Vehicule> findById(int id) throws DaoException {
+	public Vehicule findById(int id) throws DaoException {
 		List<Vehicule> resultList = new ArrayList<Vehicule>();
 		try ( Connection conn = ConnectionManager.getConnection();
 				PreparedStatement statement = conn.prepareStatement(FIND_VEHICLE_QUERY);)
@@ -75,7 +75,7 @@ public class VehiculeDao {
 				vehicule.setModele(resultSet.getString(4));				
 				resultList.add(vehicule);
 			} 
-			return resultList;
+			return resultList.get(0);
 		} catch (SQLException e) { //e : nom de l'erreur (variable ?)
 			throw new DaoException("Erreur lors de la création : " + e.getMessage());			
 		}	

@@ -14,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Utilisateurs ICI
+                Utilisateurs
             </h1>
         </section>
 
@@ -25,8 +25,8 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" action="/users/create">
-                            <div class="box-body">
+                        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/users/create">
+                            <div class="box-body">	
                                 <div class="form-group">
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
 
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="col-sm-2 control-label">Birthdate (**-**-****)</label>
+                                    <label for="email" class="col-sm-2 control-label">Birthdate (****-**-**)</label>
 
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Email">

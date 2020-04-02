@@ -20,8 +20,8 @@
 						<!-- Profile Image -->
 						<div class="box box-primary">
 							<div class="box-body box-profile">
-								<h3 class="profile-username text-center">${ nom } ${prenom }
-									${mail }</h3>
+								<h3 class="profile-username text-center">${ constructeur } ${nb_places }
+									${modele }</h3>
 
 								<ul class="list-group list-group-unbordered">
 									<li class="list-group-item"><b>Reservation(s)</b> <a
@@ -45,20 +45,32 @@
 								<div class="active tab-pane" id="rents">
 									<div class="box-body no-padding">
 										<table class="table table-striped">
+
 											<tr>
 												<th style="width: 10px">#</th>
-												<th>Voiture</th>
-												<th>Date de debut</th>
-												<th>Date de fin</th>
+												<th>Marque</th>
+												<th>Modele</th>
+												<th>Nombre de places</th>
+												<th>Action</th>
 											</tr>
-											<c:forEach var="i" begin="0" end="10" step="2">
-												<tr>
-													<td>3.</td>
-													<td>Renault Megane</td>
-													<td>10/01/2018</td>
-													<td>12/01/2018</td>
-												</tr>
-											</c:forEach>
+											<tr>
+												<c:forEach items="${ vehicles }" var="vehicle">
+													<td>${vehicle.id}.</td>
+													<td>${vehicle.constructeur}</td>
+													<td>${vehicle.modele}</td>
+													<td>${vehicle.nb_places}</td>
+													<td><a class="btn btn-primary"
+														href="${pageContext.request.contextPath}/cars/details?id=${vehicle.id}">
+															<i class="fa fa-play"></i>
+													</a> <a class="btn btn-success"
+														href="${pageContext.request.contextPath}/cars/modify?id=${vehicle.id}">
+															<i class="fa fa-edit"></i>
+													</a> <a class="btn btn-danger"
+														href="${pageContext.request.contextPath}/cars/delete?id=${vehicle.id}">
+															<i class="fa fa-trash"></i>
+													</a></td>
+												</c:forEach>
+											</tr>
 
 										</table>
 									</div>

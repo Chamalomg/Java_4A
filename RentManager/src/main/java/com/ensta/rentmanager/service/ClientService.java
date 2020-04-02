@@ -35,7 +35,7 @@ public class ClientService {
 		checkAge(client);
 		checkNom(client);
 		checkPrenom(client);	
-		checkMail(client);
+		//checkMail(client);
 		try {
 			return clientDao.create(client);
 		} catch (DaoException e) {
@@ -44,18 +44,20 @@ public class ClientService {
 	}
 	private void checkAge(Client client) throws ServiceException {
 		long age = ChronoUnit.YEARS.between(client.getNaissance().toLocalDate(), LocalDate.now());
+		System.out.println(age);
 		if (age<18) {
 			throw new ServiceException("Le client doit avoir 18 ans : il n'a que " + age);
 		}
 	}
 	
-	private void checkMail(Client client) throws ServiceException {
-		String mail = client.getEmail();
+	/*private void checkMail(Client client) throws ServiceException {
+		String mail = client.getEmail();	
+		System.out.println(mail);
 		if (!mail.contains("@")) {
 			throw new ServiceException("Le mail doit contenir un @ !");
 		}
-		/*Mail déjà uilisé ? */
-	}
+		/*Mail déjà uilisé ? 
+	}*/
 	public long delete(int Id) throws ServiceException {
 		try {
 			return clientDao.delete(Id);
@@ -66,6 +68,7 @@ public class ClientService {
 
 	private void checkPrenom(Client client) throws ServiceException {
 		String prenom = client.getPrenom();
+		System.out.println(prenom);
 		if (prenom.length() == 0) {
 			throw new ServiceException("Le client doit avoir un prenom non vide");
 		} else if (prenom.length() <= 3) {
@@ -75,6 +78,7 @@ public class ClientService {
 
 	private void checkNom(Client client) throws ServiceException {
 		String nom = client.getNom();
+		System.out.println(nom);
 		if (nom.length() == 0) {
 			throw new ServiceException("Le client doit avoir un nom non vide");
 		} else if (nom.length() <= 3) {

@@ -8,7 +8,6 @@ import java.util.List;
 import com.ensta.rentmanager.dao.VehiculeDao;
 import com.ensta.rentmanager.exception.DaoException;
 import com.ensta.rentmanager.exception.ServiceException;
-import com.ensta.rentmanager.model.Client;
 import com.ensta.rentmanager.model.Vehicule;
 
 public class VehiculeService {
@@ -43,11 +42,10 @@ public class VehiculeService {
 			throw new ServiceException(e.getMessage());
 		}	 
 	}
-	
 	private void checkArgs(Vehicule vehicule) throws ServiceException {
 		String constr = vehicule.getConstructeur();
 		String modele = vehicule.getModele();		
-		int Nb_places = (int)vehicule.getNb_places();
+		int Nb_places = vehicule.getNb_places();
 		if (constr.length() == 0) {
 			throw new ServiceException("Entrer un constructeur");
 		} else if (modele.length() == 0) {
@@ -58,7 +56,7 @@ public class VehiculeService {
 	}
 
 
-	public List<Vehicule> findById(int id) throws ServiceException {
+	public Vehicule findById(int id) throws ServiceException {
 		try {
 			return vehiculeDao.findById(id);
 		} catch (DaoException e) {

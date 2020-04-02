@@ -22,7 +22,7 @@ public class ListVehiculeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WEB-INF/views/vehicules/list.jsp");
+				"/WEB-INF/views/vehicles/list.jsp");
 		try {
 			for (Vehicule car: vehiculeservice.findAll()) {
 				System.out.println(car.toString());
@@ -31,7 +31,7 @@ public class ListVehiculeServlet extends HttpServlet {
 			//Renvoie la liste de vehicules à la vue list.jsp
 			request.setAttribute("vehicles", vehiculeservice.findAll());
 		} catch (ServiceException e) {
-				request.setAttribute("vehicles", "Une erreur est survenue");
+			request.setAttribute("vehicles", "Une erreur est survenue");
 		}
 		dispatcher.forward(request, response);		
 	}

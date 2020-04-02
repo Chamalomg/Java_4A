@@ -9,26 +9,27 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.ensta.rentmanager.exception.ServiceException;
 import com.ensta.rentmanager.model.Vehicule;
 import com.ensta.rentmanager.service.VehiculeService;
 
-@WebServlet("/vehicule/create")
+@WebServlet("/cars/create")
 public class AddVehiculeServlet extends HttpServlet {
 	VehiculeService vehiculeService = VehiculeService.getInstance();
 	
 	private static final long serialVersionUID = 1L;
 	
-	protected void doGet(HttpServletRequest request, HttpServletRequest response) throws ServiceException, IOException, ServletException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"WEB-INF/views/vehicules/create.jsp");
+				"WEB-INF/views/vehicles/create.jsp");
 		try {
 			request.setAttribute("vehicules", vehiculeService.findAll());
 		} catch (ServiceException e) {
 				request.setAttribute("nbUtilisateur", "Une erreur est survenue");
 		}
-		dispatcher.forward(request, (ServletResponse) response);
+		dispatcher.forward(request, response);
 				
 	}
 	protected void doPost(HttpServletRequest request, HttpServletRequest response) {

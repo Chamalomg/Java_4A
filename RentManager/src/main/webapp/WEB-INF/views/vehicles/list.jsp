@@ -26,8 +26,8 @@
 						vehicles
 						<div class="box">
 							<div class="box-body no-padding">
-								<!--<table class="table table-striped">
-								
+								<table class="table table-striped">
+
 									<tr>
 										<th style="width: 10px">#</th>
 										<th>Marque</th>
@@ -35,27 +35,28 @@
 										<th>Nombre de places</th>
 										<th>Action</th>
 									</tr>
-									<tr>
-										<c:forEach items="${ vehicles }" var="vehicle">
+
+									<c:forEach items="${ vehicles }" var="vehicle">
+										<tr>
 											<td>${vehicle.id}.</td>
 											<td>${vehicle.constructeur}</td>
 											<td>${vehicle.modele}</td>
 											<td>${vehicle.nb_places}</td>
-											<td>
-											<a class="btn btn-primary"
+											<td><a class="btn btn-primary"
 												href="${pageContext.request.contextPath}/cars/details?id=${vehicle.id}">
-												<i class="fa fa-play"></i></a> 
-											<a class="btn btn-success" 
+													<i class="fa fa-play"></i>
+											</a> <a class="btn btn-success"
 												href="${pageContext.request.contextPath}/cars/modify?id=${vehicle.id}">
-												<i class="fa fa-edit"></i></a> 
-											<a class="btn btn-danger"
-											 href="${pageContext.request.contextPath}/cars/delete?id=${vehicle.id}">
-											 <i class="fa fa-trash"></i></a>
-											</td>
-										</c:forEach>
-									</tr>
-									
-								</table> -->
+													<i class="fa fa-edit"></i>
+											</a> <a class="btn btn-danger"
+												href="${pageContext.request.contextPath}/cars/delete?id=${vehicle.id}">
+													<i class="fa fa-trash"></i>
+											</a></td>
+										</tr>
+									</c:forEach>
+
+
+								</table>
 							</div>
 							<!-- /.box-body -->
 						</div>
