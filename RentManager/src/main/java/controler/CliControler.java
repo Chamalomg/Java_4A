@@ -128,7 +128,7 @@ public class CliControler {
 	}
 
 	private static void afficherReservationId(CliControler cli, Scanner sc) {
-		System.out.println("Entrez l'Id du client poour voir ses réservations");
+		System.out.println("Entrez l'Id du client pour voir ses réservations");
 		try {
 			List<Reservation> list = cli.reservationservice.findResaByClientId(sc.nextInt());
 			for(Reservation reservation : list) {
@@ -213,11 +213,8 @@ public class CliControler {
 	private static void afficherClientId(CliControler cli, Scanner sc) {
 		try {
 			System.out.println("Entrer l'id du client à afficher");
-			List<Client> list = cli.clientservice.findById(Integer.parseInt(sc.nextLine()));
-			for(Client client : list) {
-				System.out.println(client);
-			}
-			
+			Client client = cli.clientservice.findById(Integer.parseInt(sc.nextLine()));
+			client.toString();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}

@@ -84,7 +84,7 @@ public class ClientDao {
 			throw new DaoException("Erreur lors de la création : " + e.getMessage());
 		}
 	}
-	public List<Client> findById(int id) throws DaoException {
+	public Client findById(int id) throws DaoException {
 		List<Client> resultList = new ArrayList<Client>();
 		try ( Connection conn = ConnectionManager.getConnection();
 				PreparedStatement statement = conn.prepareStatement(FIND_CLIENT_QUERY);)
@@ -100,7 +100,7 @@ public class ClientDao {
 				client.setNaissance(resultSet.getDate(4));
 				resultList.add(client);
 			} 
-			return resultList;
+			return resultList.get(0);
 		} catch (SQLException e) { //e : nom de l'erreur (variable ?)
 			throw new DaoException("Erreur lors de la création : " + e.getMessage());			
 		}	

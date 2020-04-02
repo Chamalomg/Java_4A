@@ -2,6 +2,7 @@ package controler.users;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,10 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ensta.rentmanager.exception.ServiceException;
 import com.ensta.rentmanager.model.Client;
+import com.ensta.rentmanager.model.Reservation;
 import com.ensta.rentmanager.service.ClientService;
+import com.ensta.rentmanager.service.ReservationService;
 
 @WebServlet("/users/details")
 public class DetailsClientServlet extends HttpServlet {
+	ReservationService reservationservice = ReservationService.getInstance();
 	ClientService clientservice = ClientService.getInstance();
 	
 	private static final long serialVersionUID = 1L;
@@ -29,8 +33,10 @@ public class DetailsClientServlet extends HttpServlet {
 		System.out.println("Id : " + id_client);
 		
 		 try {
-			 System.out.println("try again");
-			 request.setAttribute("nomUtilisateur", clientservice.findById(id_client));
+			 Client client = clientservice.findById(id_client);
+			 request.setAttribute("nom", client.getNom());
+			 request.setAttribute("prenom", client.getPrenom());
+			 request.setAttribute("mail", client.getEmail());
 		 } catch (ServiceException e) {
 			 request.setAttribute("nomUtilisateur", "Erreur lors de la recherche du client");
 		 }

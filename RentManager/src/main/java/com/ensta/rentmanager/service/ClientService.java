@@ -14,8 +14,6 @@ import com.ensta.rentmanager.model.Client;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-
-
 public class ClientService {
 	
 	private static ClientService instance = null;
@@ -85,7 +83,7 @@ public class ClientService {
 	}
 
 
-	public List<Client> findById(int id) throws ServiceException {
+	public Client findById(int id) throws ServiceException {
 		try {
 			return clientDao.findById(id);
 		} catch (DaoException e) {

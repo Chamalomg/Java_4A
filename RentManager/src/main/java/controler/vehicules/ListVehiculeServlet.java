@@ -27,8 +27,8 @@ public class ListVehiculeServlet extends HttpServlet {
 			for (Vehicule car: vehiculeservice.findAll()) {
 				System.out.println(car.toString());
 			}
-			//Renvoie la liste d'users à la vue list.jsp
 			
+			//Renvoie la liste de vehicules à la vue list.jsp
 			request.setAttribute("vehicles", vehiculeservice.findAll());
 		} catch (ServiceException e) {
 				request.setAttribute("vehicles", "Une erreur est survenue");
