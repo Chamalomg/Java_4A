@@ -8,6 +8,7 @@ Ouvrir un navigateur et aller sur http://localhost:8080/RentManager/home
 
 
 Objectifs atteints : 
+
 Lister clients, véhicules, réservation
 Supprimer clients, véhicules, réservation
 une voiture doit avoir un modèle et un constructeur, son nombre de place doit être compris entre 2 et 9
