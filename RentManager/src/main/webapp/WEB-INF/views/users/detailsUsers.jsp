@@ -25,9 +25,9 @@
 
 								<ul class="list-group list-group-unbordered">
 									<li class="list-group-item"><b>Reservation(s)</b> <a
-										class="pull-right">2</a></li>
+										class="pull-right">${nbReservations }</a></li>
 									<li class="list-group-item"><b>Vehicule(s)</b> <a
-										class="pull-right">3</a></li>
+										class="pull-right">${nbVoitures}</a></li>
 								</ul>
 							</div>
 							<!-- /.box-body -->
@@ -39,7 +39,7 @@
 						<div class="nav-tabs-custom">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#rents" data-toggle="tab">Reservations</a></li>
-								<li><a href="#cars" data-toggle="tab">Client</a></li>
+								<li><a href="#cars" data-toggle="tab">Vehicule</a></li>
 							</ul>
 							<div class="tab-content">
 								<div class="active tab-pane" id="rents">
@@ -48,27 +48,23 @@
 
 											<tr>
 												<th style="width: 10px">#</th>
-												<th>Marque</th>
-												<th>Modele</th>
-												<th>Nombre de places</th>
-												<th>Action</th>
+												<th>Véhicule</th>
+												<th>Début</th>
+												<th>Fin</th>
 											</tr>
+											<c:forEach items="${ rents }" var="rent">
+												<tr>
+													<td>${rent.id}.</td>
+													<td>${rent.id_vehicule}</td>
+													<td>${rent.debut}</td>
+													<td>${rent.fin}</td>
+												</tr>
+											</c:forEach>
 											<tr>
-												<c:forEach items="${ vehicles }" var="vehicle">
-													<td>${vehicle.id}.</td>
-													<td>${vehicle.modele}</td>
-													<td>${vehicle.nb_places}</td>
-													<td><a class="btn btn-primary"
-														href="${pageContext.request.contextPath}/cars/details?id=${vehicle.id}">
-															<i class="fa fa-play"></i>
-													</a> <a class="btn btn-success"
-														href="${pageContext.request.contextPath}/cars/modify?id=${vehicle.id}">
-															<i class="fa fa-edit"></i>
-													</a> <a class="btn btn-danger"
-														href="${pageContext.request.contextPath}/cars/delete?id=${vehicle.id}">
-															<i class="fa fa-trash"></i>
-													</a></td>
-												</c:forEach>
+												<td>3.</td>
+												<td>Renault Megane</td>
+												<td>10/01/2018</td>
+												<td>12/01/2018</td>
 											</tr>
 
 										</table>
@@ -83,14 +79,22 @@
 												<th style="width: 10px">#</th>
 												<th>Modele</th>
 												<th>Constructeur</th>
-												<th style=>Nombre de places</th>
+												<th>Nombre de places</th>
 											</tr>
-											<c:forEach var="i" begin="0" end="10" step="2">
+											<c:forEach var="i" begin="0" end="3" >
 												<tr>
 													<td>3.</td>
 													<td>Megane</td>
 													<td>Renault</td>
 													<td>5</td>
+												</tr>
+											</c:forEach>
+											<c:forEach items="${ vehicles }" var="vehicle">
+												<tr>
+													<td>${vehicle.id}.</td>
+													<td>${vehicle.modele}</td>
+													<td>${vehicle.constructeur}</td>
+													<td>${vehicle.nb_places}</td>
 												</tr>
 											</c:forEach>
 										</table>

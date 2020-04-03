@@ -17,36 +17,36 @@ import com.ensta.rentmanager.service.VehiculeService;
 
 @WebServlet("/cars/create")
 public class AddVehiculeServlet extends HttpServlet {
-	VehiculeService vehiculeService = VehiculeService.getInstance();
-	
+	VehiculeService vehiculeservice = VehiculeService.getInstance();
+
 	private static final long serialVersionUID = 1L;
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"WEB-INF/views/vehicles/create.jsp");
-		try {
-			request.setAttribute("vehicules", vehiculeService.findAll());
-		} catch (ServiceException e) {
-				request.setAttribute("nbUtilisateur", "Une erreur est survenue");
-		}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/vehicles/createVehicule.jsp");
 		dispatcher.forward(request, response);
-				
+
 	}
-	protected void doPost(HttpServletRequest request, HttpServletRequest response) {
-		String modele = request.getParameter("last_name");
-		String constructeur = request.getParameter("first_name");
-		int Nb_places = Integer.parseInt(request.getParameter("Nb_places"));
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String modele = request.getParameter("modele");
+		String constructeur = request.getParameter("manufacturer");
+		String Nb_places = request.getParameter("seats");
+		int nplaces = Integer.parseInt(Nb_places);
 		
 		Vehicule newVehicule = new Vehicule();
 		newVehicule.setModele(modele);
 		newVehicule.setConstructeur(constructeur);
-		newVehicule.setNb_places((byte)Nb_places);
+		newVehicule.setNb_places((byte) nplaces);
+
 		RequestDispatcher dispatcher;
 		try {
-			vehiculeService.create(newVehicule);
-			dispatcher = request.getRequestDispatcher("WEB-INF/views/users/home.jsp");
+			vehiculeservice.create(newVehicule);
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/vehicle/createVehicule.jsp");
 		} catch (ServiceException e) {
-			dispatcher = request.getRequestDispatcher("WEB-INF/views/users/create.jsp");
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/vehicle/createVehicule.jsp");
 		}
+		dispatcher.forward(request, response);
 	}
 }

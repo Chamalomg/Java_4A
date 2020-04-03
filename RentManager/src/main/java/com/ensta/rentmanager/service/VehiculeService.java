@@ -28,7 +28,7 @@ public class VehiculeService {
 	}
 	
 	public long create(Vehicule vehicule) throws ServiceException {
-		checkArgs(vehicule);
+		//checkArgs(vehicule);
 		try {
 			return vehiculeDao.create(vehicule);
 		} catch (DaoException e) {

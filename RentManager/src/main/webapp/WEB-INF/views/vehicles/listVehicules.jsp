@@ -23,7 +23,6 @@
 			<section class="content">
 				<div class="row">
 					<div class="col-md-12">
-						vehicles
 						<div class="box">
 							<div class="box-body no-padding">
 								<table class="table table-striped">

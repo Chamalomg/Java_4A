@@ -22,7 +22,7 @@ public class ListClientServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WEB-INF/views/users/list.jsp");
+				"/WEB-INF/views/users/listUsers.jsp");
 		try {
 			
 			/*for (Client user: clientservice.findAll()) {
@@ -33,7 +33,7 @@ public class ListClientServlet extends HttpServlet {
 		} catch (ServiceException e) {
 				request.setAttribute("users", "Une erreur est survenue");
 		}
-		dispatcher.forward(request, (ServletResponse) response);		
+		dispatcher.forward(request, response);		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

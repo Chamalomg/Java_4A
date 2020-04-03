@@ -23,13 +23,8 @@ public class AddClientServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WEB-INF/views/users/create.jsp");/*
-		try {
-			request.setAttribute("users", clientservice.findAll());
-		} catch (ServiceException e) {
-				request.setAttribute("nbUtilisateur", "Une erreur est survenue");
-		}*/
-		dispatcher.forward(request, response);
+				"/WEB-INF/views/users/createUser.jsp");
+		dispatcher.forward(request, response); //ok
 				
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -48,9 +43,9 @@ public class AddClientServlet extends HttpServlet {
 		try {
 			clientservice.create(newClient);
 			//Nouveau client, et retourne sur la page d'accueil, si erreur : recommence
-			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/list.jsp");
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/listUsers.jsp");
 		} catch (ServiceException e) {
-			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/list.jsp");
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/listUsers.jsp");
 		}
 		
 		dispatcher.forward(request, response);

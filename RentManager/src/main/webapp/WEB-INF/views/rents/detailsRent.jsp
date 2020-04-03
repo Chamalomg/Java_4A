@@ -20,14 +20,13 @@
 						<!-- Profile Image -->
 						<div class="box box-primary">
 							<div class="box-body box-profile">
-								<h3 class="profile-username text-center">${constructeur} 
-									${modele} : ${nb_places} places</h3>
+								<h3 class="profile-username text-center">resa num 4 </h3>
 
 								<ul class="list-group list-group-unbordered">
-									<li class="list-group-item"><b>Reservation(s)</b> <a
-										class="pull-right">2</a></li>
-									<li class="list-group-item"><b>Client(s)</b> <a
-										class="pull-right">3</a></li>
+									<li class="list-group-item"><b>Client</b> <a
+										class="pull-right">1</a></li>
+									<li class="list-group-item"><b>Vehicule(s)</b> <a
+										class="pull-right">1</a></li>
 								</ul>
 							</div>
 							<!-- /.box-body -->
@@ -38,11 +37,10 @@
 					<div class="col-md-9">
 						<div class="nav-tabs-custom">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#rents" data-toggle="tab">Reservations</a></li>
-								<li><a href="#cars" data-toggle="tab">Clients</a></li>
+								<li class="active"><a href="#rents" data-toggle="tab">Client</a></li>
+								<li><a href="#cars" data-toggle="tab">Vehicule</a></li>
 							</ul>
 							<div class="tab-content">
-							
 								<div class="active tab-pane" id="rents">
 									<div class="box-body no-padding">
 										<table class="table table-striped">
@@ -54,20 +52,14 @@
 												<th>Fin</th>
 											</tr>
 											<tr>
-												<c:forEach items="${ rents }" var="rent">
-													<td>${rent.id}.</td>
-													<td>${rent.Id_vehicule}</td>
-													<td>${rent.debut}</td>
-													<td>${rent.fin}</td>
-												</c:forEach>
-											</tr>
-											<tr>
-												
+												<td>3.</td>
+												<td>Renault Megane</td>
+												<td>10/01/2018</td>
+												<td>12/01/2018</td>
 											</tr>
 
 										</table>
 									</div>
-									
 								</div>
 								<!-- /.tab-pane -->
 								<div class="tab-pane" id="cars">
@@ -78,9 +70,9 @@
 												<th style="width: 10px">#</th>
 												<th>Modele</th>
 												<th>Constructeur</th>
-												<th style=>Nombre de places</th>
+												<th>Nombre de places</th>
 											</tr>
-											<c:forEach var="i" begin="0" end="10" step="2">
+											<c:forEach var="i" begin="0" end="3" >
 												<tr>
 													<td>3.</td>
 													<td>Megane</td>
