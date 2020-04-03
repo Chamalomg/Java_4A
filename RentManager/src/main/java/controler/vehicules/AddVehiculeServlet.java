@@ -43,10 +43,9 @@ public class AddVehiculeServlet extends HttpServlet {
 		RequestDispatcher dispatcher;
 		try {
 			vehiculeservice.create(newVehicule);
-			dispatcher = request.getRequestDispatcher("/WEB-INF/views/vehicle/createVehicule.jsp");
+			response.sendRedirect(request.getContextPath() + "/cars");
 		} catch (ServiceException e) {
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/vehicle/createVehicule.jsp");
 		}
-		dispatcher.forward(request, response);
 	}
 }

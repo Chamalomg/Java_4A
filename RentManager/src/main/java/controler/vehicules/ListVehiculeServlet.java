@@ -24,9 +24,9 @@ public class ListVehiculeServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
 				"/WEB-INF/views/vehicles/listVehicules.jsp");
 		try {
-			for (Vehicule car: vehiculeservice.findAll()) {
+			/*for (Vehicule car: vehiculeservice.findAll()) {
 				System.out.println(car.toString());
-			}
+			}*/
 			
 			//Renvoie la liste de vehicules à la vue list.jsp
 			request.setAttribute("vehicles", vehiculeservice.findAll());

@@ -41,14 +41,14 @@ public class AddClientServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher;
 		try {
-			clientservice.create(newClient);
 			//Nouveau client, et retourne sur la page d'accueil, si erreur : recommence
-			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/listUsers.jsp");
+			clientservice.create(newClient);
+			response.sendRedirect(request.getContextPath() + "/users");
 		} catch (ServiceException e) {
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/listUsers.jsp");
 		}
 		
-		dispatcher.forward(request, response);
+		//dispatcher.forward(request, response);
 		
 	}
 }

@@ -26,9 +26,9 @@ public class ListReservationServlet extends HttpServlet {
 				"/WEB-INF/views/rents/listRents.jsp");
 		try {
 			
-			for (Reservation rent: reservationservice.findAll()) {
+			/*for (Reservation rent: reservationservice.findAll()) {
 				System.out.println(rent.toString());
-			}
+			}*/
 			request.setAttribute("rents", reservationservice.findAll());
 		} catch (ServiceException e) {
 				request.setAttribute("rents", "Une erreur est survenue");

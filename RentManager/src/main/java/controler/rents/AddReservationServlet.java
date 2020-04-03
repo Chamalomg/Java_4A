@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.ensta.rentmanager.exception.ServiceException;
 import com.ensta.rentmanager.model.Client;
 import com.ensta.rentmanager.model.Reservation;
+import com.ensta.rentmanager.service.ReservationService;
 
 /**
  * Servlet implementation class AddReservationServlet
  */
 @WebServlet("/rents/create")
 public class AddReservationServlet extends HttpServlet {
+	ReservationService reservationservice = ReservationService.getInstance();
 	private static final long serialVersionUID = 1L;
        
 
@@ -48,9 +50,14 @@ public class AddReservationServlet extends HttpServlet {
 		newReservation.setDebut(debut);
 		newReservation.setFin(fin);
 		
-		RequestDispatcher dispatcher = (RequestDispatcher) request;
-		
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher;
+		try {
+			//Nouveau client, et retourne sur la page d'accueil, si erreur : recommence
+			reservationservice.create(newReservation);
+			response.sendRedirect(request.getContextPath() + "/rents");
+		} catch (ServiceException e) {
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/listRents.jsp");
+		}
 
 	}
 
